@@ -59,9 +59,9 @@ export default class AddNote extends Component {
     e.preventDefault()
     const {name,content,folder} = this.state;
     const newNote = JSON.stringify({
-      name: name.value,
+      note_name: name.value,
       content: content.value,
-      folderId: folder.value,
+      folder_Id: folder.value,
       modified: new Date(Date.now()),
     });
     const options ={
