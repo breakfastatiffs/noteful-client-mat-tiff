@@ -16,16 +16,16 @@ export default class AddFolder extends Component {
   constructor(props){
     super(props);
     this.state = {
-      name:{value:'',touched:false}
+      title:{value:'',touched:false}
     };
   }
 
   updateName(name){
-    this.setState({name:{value: name, touched: true}});
+    this.setState({title:{value: name, touched: true}});
   }
 
   validateName(){
-    const {value, touched}  = this.state.name;
+    const {value, touched}  = this.state.title;
     const {folders} = this.context;
     return (
       typeof value === 'string' &&
@@ -40,7 +40,7 @@ export default class AddFolder extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const newFolder = JSON.stringify({title:this.state.name.value});
+    const newFolder = JSON.stringify({name:this.state.title.value});
     const options = {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -60,6 +60,14 @@ export default class AddFolder extends Component {
         console.error({ error })
       })
   }
+  onNameChange = (e) => {
+    const {target} = e
+    const {value} = target
+    const {title} = this.state
+    title.value = value
+    title.touched = value.length > 0
+    this.setState({title})
+  }
 
   render() {
     return (
@@ -70,10 +78,15 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
+            <input 
+              type='text' 
+              id='folder-name-input' 
+              name='folder-name' 
+              onChange={this.onNameChange}
+              />
           </div>
           <div className='buttons'>
-            <button disables={!this.validateName()} type='submit' className='submit-new-folder'>
+            <button disabled={!this.validateName()} type='submit' className='submit-new-folder'>
               Add folder
             </button>
           </div>

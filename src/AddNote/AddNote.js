@@ -59,9 +59,9 @@ export default class AddNote extends Component {
     e.preventDefault()
     const {name,content,folder} = this.state;
     const newNote = JSON.stringify({
-      note_name: name.value,
+      name: name.value,
       content: content.value,
-      folder_Id: folder.value,
+      folder_id: folder.value,
       modified: new Date(Date.now()),
     });
     const options ={
@@ -77,7 +77,7 @@ export default class AddNote extends Component {
       })
       .then((res) => {
         res.id = res.id.toString();
-        this.content.AddNote(res);
+        this.context.addNote(res);
         this.props.history.push('/')
       })
       .catch(error => {
@@ -99,7 +99,7 @@ export default class AddNote extends Component {
   };
 
   renderForm() {
-    console.log(this.state.folder)
+    console.log(this.context)
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
@@ -112,7 +112,7 @@ export default class AddNote extends Component {
               type='text' 
               id='note-name-input' 
               name='note-name' 
-              //onChange={(e) => this.updateName()(e.target.value)}
+              onChange={e => this.updateName(e.target.value)}
             />
             {this.state.name.touched && !this.validateName() ? (
               <p>name is required</p>
@@ -126,7 +126,7 @@ export default class AddNote extends Component {
             <textarea 
               id='note-content-input' 
               name='note-content'
-              onChange={(e) => this.updateContent(e.target.value)}
+              onChange={e => this.updateContent(e.target.value)}
               aria-label="note content"
               placeholder="New note (content optional)"
               rows="14" 
@@ -148,7 +148,7 @@ export default class AddNote extends Component {
           <div className='buttons'>
             <button 
               type='submit'
-              disables={!this.validateName() || !this.validateFolder()}
+              disabled={!this.validateName() || !this.validateFolder()}
               className="submit-new-folder"
             >
               Add note
