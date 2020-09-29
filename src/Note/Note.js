@@ -31,16 +31,18 @@ export default class Note extends React.Component {
       headers: {
         'content-type': 'application/json'
       },
+      body: JSON.stringify(noteId)
     })
       .then((res) => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
+          return res.json()
       })
-      .then(() => {
+      .then((noteId) => {
         this.context.deleteNote(noteId)
         // allow parent to perform extra behaviour
         this.props.onDeleteNote(noteId)
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.error({ error })

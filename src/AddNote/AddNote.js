@@ -99,7 +99,6 @@ export default class AddNote extends Component {
   };
 
   renderForm() {
-    console.log(this.context)
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
@@ -117,7 +116,6 @@ export default class AddNote extends Component {
             {this.state.name.touched && !this.validateName() ? (
               <p>name is required</p>
             ) : null}
-            )}
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
