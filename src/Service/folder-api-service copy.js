@@ -38,7 +38,7 @@ const FolderApiService = {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        folder_id: folderId,
+        folderId: folderId,
         title,
       }),
     })
@@ -55,7 +55,7 @@ const FolderApiService = {
           'content-type': 'application/json',
       },
       body: JSON.stringify({
-          folder_id: folderId,
+          folderId: folderId,
           title,
       }),
     })
