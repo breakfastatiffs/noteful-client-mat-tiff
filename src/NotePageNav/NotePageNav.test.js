@@ -14,7 +14,7 @@ describe(`NotePageNav component`, () => {
     const props = {
       match: {
         params: {
-          note_id: 'test-note-id'
+          noteId: 'test-note-id'
         }
       }
     }

@@ -11,8 +11,8 @@ const NotefulApiService = {
           : data.json()
     )
   },
-  getById(note_id) {
-    return fetch(`${config.API_ENDPOINT}/notes/${note_id}`, {
+  getById(noteId) {
+    return fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
         headers: {},
     })
     .then(data => 
@@ -21,8 +21,8 @@ const NotefulApiService = {
           : data.json()
     )
   },
-  deleteNote(note_id) {
-    return fetch(`${config.API_ENDPOINT}/notes/${note_id}`, {
+  deleteNote(noteId) {
+    return fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
         headers: {},
     })
     .then(data => {
@@ -31,14 +31,14 @@ const NotefulApiService = {
         }
     )
   },
-  postNote(note_id, title, content) {
+  postNote(noteId, title, content) {
     return fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        note_id: note_id,
+        noteId: noteId,
         title,
         content,
       }),
@@ -49,14 +49,14 @@ const NotefulApiService = {
           : res.json()
       )
   },
-  patchNote (note_id, title, content) {
-    return fetch(`${config.API_ENDPOINT}/notes/${note_id}`, {
+  patchNote (noteId, title, content) {
+    return fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'PATCH',
       headers: {
           'content-type': 'application/json',
       },
       body: JSON.stringify({
-          note_id: note_id,
+          noteId: noteId,
           title,
           content
       }),

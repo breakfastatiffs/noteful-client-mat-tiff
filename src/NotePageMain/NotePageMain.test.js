@@ -14,7 +14,7 @@ describe(`NotePageMain component`, () => {
     const props = {
       match: {
         params: {
-          note_id: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          noteId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }
@@ -37,7 +37,7 @@ describe(`NotePageMain component`, () => {
     const props = {
       match: {
         params: {
-          note_id: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          noteId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }

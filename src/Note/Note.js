@@ -13,13 +13,6 @@ export default class Note extends React.Component {
     onDeleteNote: () => {},
   }
 
-  // static propTypes = {
-  //   name: PropTypes.string.isRequired,
-  //   id: PropTypes.string.isRequired,
-  //   modified: PropTypes.string.isRequired,
-  //   onDeleteNote: PropTypes.func.isRequired
-  // }
-
   static contextType = ApiContext;
 
   handleClickDelete = e => {
